@@ -1,0 +1,30 @@
+El extractor solo obtuvo el contenido visible, no el c\u00f3digo fuente HTML completo. Para extraer el m\u00e1ximo c\u00f3digo HTML de tu aplicaci\u00f3n BuildAI, necesitas:
+
+## M\u00e9todos para obtener el HTML completo:
+
+### 1. **Desde el Navegador (M\u00e1s directo)**
+- Abre tu web: https://judas-experience-13898.buildaispace.app/
+- Click derecho \u2192 **"Ver c\u00f3digo fuente de la p\u00e1gina"** (o Ctrl+U)
+- O presiona F12 \u2192 Pesta\u00f1a **"Elements"** \u2192 Click derecho en `<html>` \u2192 **Copy** \u2192 **Copy outerHTML**
+
+### 2. **Desde BuildAI Platform**
+- Entra a tu dashboard en BuildAI.space
+- Ve a tu app "Judas Experience"
+- Busca la opci\u00f3n **"Export"** o **"Download Code"**
+- Algunas plataformas permiten descargar el c\u00f3digo generado
+
+### 3. **Usando PowerShell/curl**
+```powershell
+# Descarga el HTML completo
+Invoke-WebRequest -Uri "https://judas-experience-13898.buildaispace.app/" -OutFile "belentani-web.html"
+
+# O usa curl
+curl https://judas-experience-13898.buildaispace.app/ -o belentani-web.html
+```
+
+### 4. **Herramientas especializadas**
+- **HTTrack**: Copia sitios web completos
+- **wget**: `wget -r -p -k https://judas-experience-13898.buildaispace.app/`
+- **Save Page WE** (extensi\u00f3n Chrome/Firefox): Guarda p\u00e1ginas completas con todos los recursos
+
+\u00bfQuieres que te ayude a crear un script espec\u00edfico para extraer todo el c\u00f3digo incluyendo CSS y JavaScript embebido?

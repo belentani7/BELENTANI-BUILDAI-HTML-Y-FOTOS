@@ -1,0 +1,481 @@
+# 🔬 **ANÁLISIS FORENSE TÉCNICO COMPLETO - JUDAS EXPERIENCE**
+
+Lamentablemente, **BuildAI.space** es una plataforma no-code [[2]] que no expone públicamente el código fuente. Sin embargo, te doy el análisis máximo posible y **cómo extraerlo tú mismo**:
+
+---
+
+## 📊 **INFORMACIÓN TÉCNICA EXTRAÍDA:**
+
+### **METADATOS CONFIRMADOS:**
+```
+URL: judas-experience-13898.buildaispace.app
+Plataforma: BuildAI.space
+PWA: Sí (Progressive Web App instalable)
+Título: BELENTANI
+Meta Description: "An immersive artistic universe and a multimedia ecosystem 
+that functions as a creative operating system. This platform fuses the dark 
+textures of dark pop, visceral R&B, and experimental electronics with 
+cutting-edge artificial intelligence tools..."
+
+SECCIONES:
+1. HOME
+2. THE ARTIST
+3. MUSIC
+4. JUDAS PORTAL
+5. ART GALLERY
+6. CONTACT
+7. STUDIO
+
+NAVEGACIÓN: Fixed top navigation
+BADGE: "Verified Global Artist • Entity Active"
+PWA INSTALL: Modal con instrucciones (2 pasos)
+FOOTER: "Built with BuildAI"
+```
+
+---
+
+## 🛠️ **CÓMO EXTRAER EL CÓDIGO COMPLETO TÚ MISMO:**
+
+### **MÉTODO 1: INSPECCIONAR ELEMENTO (F12)**
+
+1. **Abre la página:** `judas-experience-13898.buildaispace.app`
+2. **Presiona F12** (o clic derecho → "Inspeccionar")
+3. **Ve a la pestaña "Elements"** (Elementos)
+4. **Copia el HTML completo:**
+   - Haz clic en `<html>` en la parte superior
+   - Clic derecho → Copy → Copy element
+   - O Ctrl+A → Ctrl+C para seleccionar todo
+
+### **MÉTODO 2: VER CÓDIGO FUENTE**
+
+1. **Presiona Ctrl+U** (o clic derecho → "Ver código fuente de la página")
+2. **Copia TODO** el código HTML
+3. **Pégalo en un archivo .txt** y envíamelo para que lo analice
+
+### **MÉTODO 3: EXTRAER CSS**
+
+En DevTools (F12):
+1. Ve a la pestaña **"Sources"**
+2. Busca archivos **.css** en el panel izquierdo
+3. Haz clic en cada uno y copia el contenido
+
+O alternativamente:
+1. Ve a la pestaña **"Elements"**
+2. Selecciona cualquier elemento
+3. En el panel derecho verás **todos los estilos CSS aplicados**
+4. Copia las reglas CSS completas
+
+### **MÉTODO 4: EXTRAER JAVASCRIPT**
+
+En DevTools (F12):
+1. Ve a la pestaña **"Sources"**
+2. Busca archivos **.js**
+3. Copia el contenido de cada uno
+
+### **MÉTODO 5: HERRAMIENTAS EXTERNAS**
+
+Usa estas herramientas online:
+- **view-page-source.com** - Pega la URL y obtén el source completo
+- **webcode.tools** - Analizador de código web
+- **builtwith.com** - Detecta tecnologías usadas
+
+---
+
+## 💻 **RECONSTRUCCIÓN TÉCNICA BASADA EN ANÁLISIS:**
+
+### **ESTRUCTURA HTML INFERIDA:**
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BELENTANI | Judas Experience</title>
+    <meta name="description" content="An immersive artistic universe...">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- BuildAI Scripts -->
+    <script src="https://cdn.buildai.space/app.js"></script>
+    
+    <!-- Estilos -->
+    <style>
+        /* Glassmorphism base */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Terminal */
+        .terminal {
+            font-family: 'JetBrains Mono', monospace;
+            color: #00ff41;
+        }
+        
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="fixed-top glass-card">
+        <div class="logo">B</div>
+        <ul class="nav-links">
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#artist">THE ARTIST</a></li>
+            <li><a href="#music">MUSIC</a></li>
+            <li><a href="#portal">JUDAS PORTAL</a></li>
+            <li><a href="#gallery">ART GALLERY</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+            <li><a href="#studio">STUDIO</a></li>
+        </ul>
+        <div class="badge">Verified Global Artist • Entity Active</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1 class="glitch-text" data-text="BELENTANI"># BELENTANI</h1>
+        <p class="tagline">&gt; A new sound is coming.</p>
+        <p class="subtitle">Welcome to the world of Judas.</p>
+        <button class="cta-neon">INICIAR SECUENCIA</button>
+        
+        <!-- Terminal -->
+        <div class="terminal glass-card">
+            <h3>System Core Terminal</h3>
+            <div class="terminal-lines">
+                <p>&gt; Analyzing user interaction patterns...</p>
+                <p>&gt; Accessing 'Judas' core memories...</p>
+                <p>&gt; Awaiting creative input...</p>
+                <p class="cursor">&gt; _</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PWA Install Modal -->
+    <div id="pwa-modal" class="modal">
+        <div class="modal-content glass-card">
+            <h3>Belentani</h3>
+            <p>judas-experience-13898.buildaispace.app</p>
+            <button>Install</button>
+            <ol>
+                <li>Open your browser menu</li>
+                <li>Tap "Add to Home screen"</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Built with BuildAI</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // PWA Registration
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js');
+        }
+        
+        // Terminal typing effect
+        const terminalLines = document.querySelectorAll('.terminal-lines p');
+        terminalLines.forEach((line, index) => {
+            setTimeout(() => {
+                line.style.opacity = '1';
+            }, index * 500);
+        });
+        
+        // Glitch effect
+        setInterval(() => {
+            const glitch = document.querySelector('.glitch-text');
+            glitch.classList.add('active');
+            setTimeout(() => glitch.classList.remove('active'), 200);
+        }, 5000);
+    </script>
+</body>
+</html>
+```
+
+---
+
+### **CSS DETALLADO INFERIDO:**
+
+```css
+/* RESET & BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0a;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* GLASSMORPHISM */
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* NAVIGATION */
+.fixed-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #00f0ff;
+}
+
+/* HERO SECTION */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 20px;
+    background: radial-gradient(circle at 50% 50%, 
+        rgba(176, 38, 255, 0.1) 0%, 
+        transparent 50%),
+        radial-gradient(circle at 80% 20%, 
+        rgba(0, 240, 255, 0.1) 0%, 
+        transparent 50%),
+        #0a0a0a;
+}
+
+/* GLITCH EFFECT */
+.glitch-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 72px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    position: relative;
+    color: #ffffff;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-text::before {
+    left: 2px;
+    text-shadow: -1px 0 #ff00ff;
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim 3s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+    left: -2px;
+    text-shadow: -1px 0 #00f0ff;
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% { clip: rect(10px, 9999px, 30px, 0); }
+    20% { clip: rect(80px, 9999px, 100px, 0); }
+    40% { clip: rect(10px, 9999px, 50px, 0); }
+    60% { clip: rect(60px, 9999px, 80px, 0); }
+    80% { clip: rect(20px, 9999px, 60px, 0); }
+    100% { clip: rect(90px, 9999px, 110px, 0); }
+}
+
+/* TERMINAL */
+.terminal {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 30px;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.terminal h3 {
+    color: #00f0ff;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.terminal-lines p {
+    color: #00ff41;
+    margin: 10px 0;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+.cursor {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* CTA BUTTON */
+.cta-neon {
+    background: transparent;
+    border: 2px solid #00f0ff;
+    color: #00f0ff;
+    padding: 18px 40px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.cta-neon:hover {
+    background: rgba(0, 240, 255, 0.1);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.6);
+    transform: scale(1.05);
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 400px;
+    padding: 40px;
+    text-align: center;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .glitch-text {
+        font-size: 48px;
+    }
+    
+    .hero {
+        padding: 100px 20px;
+    }
+}
+```
+
+---
+
+##  **ARCHIVOS QUE NECESITAS EXTRAER:**
+
+1. **index.html** - Estructura completa
+2. **styles.css** - Todos los estilos
+3. **app.js** - JavaScript de la aplicación
+4. **manifest.json** - Configuración PWA
+5. **sw.js** - Service Worker (PWA)
+6. **assets/** - Imágenes, iconos, fuentes
+
+---
+
+## ⚡ **ACCIÓN INMEDIATA:**
+
+**Copia y pega esto en tu navegador (consola F12):**
+
+```javascript
+// Extraer HTML completo
+console.log(document.documentElement.outerHTML);
+
+// Extraer todos los estilos CSS
+const styles = Array.from(document.styleSheets)
+    .map(sheet => {
+        try {
+            return Array.from(sheet.cssRules)
+                .map(rule => rule.cssText)
+                .join('\n');
+        } catch(e) {
+            return '';
+        }
+    })
+    .join('\n');
+console.log(styles);
+
+// Guardar en archivo
+const blob = new Blob([document.documentElement.outerHTML], 
+    {type: 'text/html'});
+const url = URL.createObjectURL(blob);
+const a = document.createElement('a');
+a.href = url;
+a.download = 'judas-experience.html';
+a.click();
+```
+
+**Esto descargará el HTML completo automáticamente.**
+
+---
+
+**¿Necesitas que analice el código una vez que lo extraigas? Pégalo aquí y te daré un desglose técnico completo de cada componente.**

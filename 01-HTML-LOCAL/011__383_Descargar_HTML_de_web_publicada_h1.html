@@ -1,0 +1,73 @@
+Perfecto, entiendo. Estás usando una plataforma como **BuildAI.space** (o similar) que te deja crear la web pero **no tiene botón de descargar el código**. Aquí tienes **5 trucos para extraer tu HTML** directamente desde el navegador:
+
+---
+
+## 🟢 Método 1: Guardar la página (el más fácil)
+
+1. Abre la **vista previa** de tu web en el navegador (donde la ves funcionando).
+2. Presiona **`Ctrl + S`** (o `Cmd + S` en Mac).
+3. En "Tipo", selecciona: **"Página web, solo HTML"** o **"Página web, completa"**.
+4. Guárdala en tu escritorio.
+5. Ábrela con doble clic y ya la tienes.
+
+> ⚠️ Si la web usa React/JS complejo, a veces se guarda mal. Si se ve rota, usa el Método 2.
+
+---
+
+## 🟢 Método 2: Copiar el HTML renderizado (el más fiable)
+
+Este método copia **exactamente lo que ves en pantalla**:
+
+1. En la vista previa de tu web, haz **clic derecho** sobre la página.
+2. Selecciona **"Inspeccionar"** o **"Inspeccionar elemento"**.
+3. Se abrirá el panel de desarrollador. Ve a la pestaña **"Elements"** (o "Elementos").
+4. Arriba del todo verás `<html ...>`. Haz **clic derecho** sobre esa etiqueta `<html>`.
+5. Selecciona: **Copy → Copy outerHTML**.
+6. Abre el **Bloc de Notas**, pega con `Ctrl + V` y guarda como **`index.html`**.
+
+---
+
+## 🟢 Método 3: Ver el código fuente directo
+
+1. En la vista previa, presiona **`Ctrl + U`**.
+2. Se abrirá una pestaña con todo el código fuente.
+3. **`Ctrl + A`** (seleccionar todo) → **`Ctrl + C`** (copiar).
+4. Pega en Bloc de Notas y guarda como **`index.html`**.
+
+> ⚠️ Esto funciona si la web es HTML puro. Si es React, verás solo `<div id="root"></div>` y no servirá. En ese caso usa el Método 2.
+
+---
+
+## 🟢 Método 4: Si la web está dentro de un iframe
+
+Muchas plataformas (BuildAI, v0, etc.) muestran la preview **dentro de un marco (iframe)**:
+
+1. Haz clic derecho **sobre la web** (dentro del marco).
+2. Si aparece la opción **"Ver código fuente del marco"** o **"This Frame" → "View Frame Source"**, haz clic ahí.
+3. Copia todo el código y guárdalo como `index.html`.
+
+---
+
+## 🟢 Método 5: Extensión "SingleFile" (la mejor opción)
+
+1. Instala la extensión **[SingleFile](https://chromewebstore.google.com/detail/singlefile/mpiodijhokgodhhofbcjdecpffjipkle)** para Chrome/Edge.
+2. Abre la vista previa de tu web.
+3. Haz clic en el icono de la extensión.
+4. Te descargará **un único archivo HTML** con todo incluido (CSS, imágenes, JS).
+
+---
+
+## 📌 ¿Y después de tener el HTML?
+
+Una vez tengas tu archivo `index.html`, puedes subirlo **gratis** a internet en:
+
+| Plataforma | ¿Gratis? | Dificultad |
+|---|---|---|
+| **GitHub Pages** | ✅ Sí | Media |
+| **Netlify Drop** | ✅ Sí | Muy fácil (arrastrar y soltar) |
+| **Tiiny.host** | ✅ Sí | Muy fácil |
+| **Vercel** | ✅ Sí | Media |
+
+El más rápido es **Netlify Drop**: vas a [app.netlify.com/drop](https://app.netlify.com/drop), arrastras la carpeta con tu `index.html` y en segundos tienes un link público tipo `https://tu-web.netlify.app`.
+
+¿Con cuál de estos métodos quieres intentar primero?

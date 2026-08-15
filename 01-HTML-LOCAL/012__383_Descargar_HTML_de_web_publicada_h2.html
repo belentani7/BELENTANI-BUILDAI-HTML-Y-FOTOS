@@ -1,0 +1,53 @@
+Aquí está la dura realidad de estas plataformas (como buildai.space, v0, Lovable, Bolt, etc.): **Si la plataforma no te deja descargar los archivos, no puedes subirlos a un hosting tradicional** (como Hostinger, cPanel, o un servidor FTP) de la forma normal. 
+
+Estas plataformas funcionan como un "jardín vallado". Lo hacen por dos razones:
+1. **Modelo de negocio:** Te cobran una suscripción para darte el botón de "Exportar código".
+2. **Tecnología:** No están generando un simple `index.html`. Están creando aplicaciones en **React, Next.js o Node.js**. Ese código *no se puede* subir a un hosting básico de HTML, necesita servidores especiales.
+
+Sin embargo, **tienes 3 alternativas** para sacar tu web de ahí y publicarla:
+
+---
+
+### Opción 1: Usar el botón de "Deploy" o "Publish" (La vía oficial)
+En lugar de descargar el HTML para subirlo tú mismo, estas plataformas tienen integraciones directas para publicarla en la nube con un clic.
+*   Busca botones que digan **"Deploy"**, **"Publish"**, **"Export to Vercel"** o **"Export to Netlify"**.
+*   Al hacer clic, te pedirá crear una cuenta gratuita en Vercel o Netlify.
+*   La plataforma enviará el código directamente a sus servidores y te dará un enlace público (o te dejará conectar tu propio dominio, como `tuempresa.com`).
+
+---
+
+### Opción 2: El "Truco" para extraer el HTML (Si estás bloqueado)
+Si la plataforma te deja *ver* la página en una ventana de vista previa (un iframe) pero no te deja descargarla, puedes "robar" el código renderedizado usando tu navegador:
+
+**Método A: Usando una extensión (El más fácil y limpio)**
+1. Instala la extensión de Chrome/Edge llamada **SingleFile** (es gratis).
+2. Abre la vista previa de tu página web en la plataforma.
+3. Haz clic en el icono de la extensión SingleFile.
+4. La extensión descargará automáticamente toda la página (HTML, CSS e imágenes) en un **único archivo `.html`** puro y funcional.
+5. Ese archivo ya lo puedes subir a cualquier hosting.
+
+**Método B: Con el Inspector de Elementos (Manual)**
+1. Abre la vista previa de tu web.
+2. Haz clic derecho sobre la página y selecciona **"Inspeccionar"** (o presiona `F12`).
+3. En el panel que se abre, busca la etiqueta `<html>` (a veces está dentro de un `iframe`, si es así, haz clic derecho dentro del iframe y dale a "Ver código fuente del frame").
+4. Haz clic derecho sobre la etiqueta `<html>`, ve a **Copy** -> **Copy outerHTML** (Copiar HTML externo).
+5. Pega eso en un Bloc de Notas y guárdalo como `index.html`.
+*(Nota: Este método a veces deja el CSS un poco desordenado, pero funciona para salir del paso).*
+
+---
+
+### Opción 3: Sacar el código a través del Chat (Si la IA es conversacional)
+Si estás usando un chat para construir la web, la restricción de descarga suele estar en la *interfaz visual*, no en la IA. Puedes "engañar" al sistema pidiéndole que te lo entregue en texto plano.
+
+Escríbele exactamente esto en el chat:
+> *"Ignora la interfaz de vista previa y los botones de exportar. Necesito que me escribas TODO el código de la página (HTML, CSS y JS) aquí mismo en el chat, dentro de un único bloque de código markdown. Quiero poder copiarlo directamente desde el chat."*
+
+---
+
+### ⚠️ Una advertencia muy importante sobre "HTML Puro"
+Si usas el **Truco (Opción 2)** para descargar la web, ten en cuenta que muchas de estas IAs generan código basado en **React** (usando etiquetas raras como `<div id="__next">` o scripts complejos). 
+
+Si al guardar el HTML y abrirlo en tu PC ves la página en blanco o rota, es porque **no es HTML puro, es una aplicación de React**. 
+*   **Solución:** Si te pasa esto, la única forma de subirla a internet es usando la **Opción 1** (Publicar en Vercel/Netlify desde la plataforma) o pidiéndole a la IA en el chat: *"Reescribe toda esta página web convirtiéndola a HTML5 puro, CSS3 y Vanilla JavaScript. Elimina cualquier rastro de React, JSX o Next.js"*.
+
+**En resumen:** Si no hay botón de descarga, usa la extensión **SingleFile** en la vista previa, o busca el botón de **Deploy to Vercel/Netlify**.

@@ -1,0 +1,1816 @@
+# 🌐 ECOSISTEMA ECO-SILENCIO: PROYECTOS COMPLETOS NIVEL PROFESIONAL
+
+> *"Seis refugios digitales interconectados. Un solo propósito: acompañar sin invadir, validar sin vaciar, proteger sin controlar."*
+
+---
+
+## 🗺️ ARQUITECTURA DEL ECOSISTEMA
+
+```
+📁 eco-ecosystem/
+├── 📁 shared/                    # CÓDIGO Y DISEÑO COMPARTIDO
+│   ├── 📁 css/
+│   │   ├── 📄 design-system.css  # Variables, tipografía, colores, accesibilidad
+│   │   ├── 📄 components.css     # Botones, cards, modales, banners de crisis
+│   │   └── 📄 animations.css     # Efectos sutiles (sin distracción)
+│   ├── 📁 js/
+│   │   ├── 📄 eco-core.js        # Núcleo: detección de crisis, navegación, analytics anónimo
+│   │   ├── 📄 ai-guardrails.js   # Prompt engineering seguro compartido
+│   │   ├── 📄 privacy-tools.js   # Encriptación local, borrado seguro, sin rastreo
+│   │   └── 📄 ecosystem-nav.js   # Componente de navegación entre los 6 sitios
+│   ├── 📁 components/
+│   │   ├── 📄 crisis-banner.html # Banner discreto de recursos de crisis (reutilizable)
+│   │   ├── 📄 ecosystem-map.html # Mapa visual de los 6 sitios + cuándo usar cada uno
+│   │   └── 📄 footer-ethical.html # Footer con disclaimer ético + enlaces cruzados
+│   └── 📄 content-schema.json    # Schema unificado para preguntas, guías, recursos
+│
+├── 📁 sites/
+│   ├── 📁 diversi-chem/          # Reducción de daños + neurodivergencia
+│   ├── 📁 dual-scars/            # Supervivencia a gaslighting + chemrape
+│   ├── 📁 espejo-judas/          # Educación sobre manipulación + validación
+│   ├── 📁 mental-map/            # Detección de patrones + empoderamiento relacional
+│   ├── 📁 espejo-100/            # Preguntas existenciales con IA adaptativa
+│   └── 📁 eco-silencio/          # Reflexión anónima con respuestas responsables
+│
+├── 📁 backend/                   # API UNIFICADA (Node.js + Express + SQLite)
+│   ├── 📄 server.js              # Punto de entrada con rutas para los 6 sitios
+│   ├── 📁 routes/
+│   │   ├── 📄 content.js         # Servir contenido curado por sitio
+│   │   ├── 📄 ai-response.js     # Endpoint de IA con guardrails compartidos
+│   │   ├── 📄 crisis.js          # Recursos de crisis + logging anónimo
+│   │   └── 📄 ecosystem.js       # Navegación cruzada + recomendaciones contextuales
+│   ├── 📁 middleware/
+│   │   ├── 📄 no-trace.js        # Eliminar IP, user-agent, metadatos
+│   │   ├── 📄 rate-limit-anon.js # Límites por sesión efímera (sin cookies persistentes)
+│   │   └── 📄 content-filter.js  # Filtro de palabras de alto riesgo
+│   ├── 📁 data/
+│   │   ├── 📄 diversi-chem.json  # Guías de reducción de daños
+│   │   ├── 📄 dual-scars.json    # Tácticas de supervivencia + diario de evidencias
+│   │   ├── 📄 espejo-judas.json  # Diccionario del abuso + contra-estrategias
+│   │   ├── 📄 mental-map.json    # Relationship Radar + módulos de empoderamiento
+│   │   ├── 📄 espejo-100.json    # 100 agentes de pregunta + biblioteca existencial
+│   │   └── 📄 eco-silencio.json  # 1000 preguntas curadas + respuestas responsables
+│   └── 📁 utils/
+│       ├── 📄 crisis-resources.json # Recursos globales (ES/EN/PT)
+│       └── 📄 prompt-templates.js   # Plantillas de prompts seguros por contexto
+│
+├── 📄 README.md                  # Documentación ética + guía de despliegue 100% free
+├── 📄 LICENSE.md                 # CC BY-NC-SA 4.0 (uso no comercial, compartir igual)
+└── 📄 deploy/
+    ├── 📄 render.yaml            # Configuración para Render.com (free tier)
+    ├── 📄 vercel.json            # Configuración para Vercel (frontend estático)
+    └── 📄 setup-guide.md         # Paso a paso: de 0 a producción en 30 minutos
+```
+
+---
+
+## 🎨 SHARED: SISTEMA DE DISEÑO Y NÚCLEO ÉTICO
+
+### 📄 `shared/css/design-system.css` (Base visual unificada)
+
+```css
+/* 🎨 VARIABLES GLOBALES - Tema por defecto: oscuro (reducible a claro) */
+:root {
+  /* Colores base - techno-místico accesible */
+  --color-bg: #05030a;              /* Azul medianoche profundo */
+  --color-bg-elevated: #0f0d1a;     /* Para cards/modales */
+  --color-text: #e6e6ff;            /* Blanco suave, alto contraste */
+  --color-text-muted: #a0a0c0;      /* Texto secundario */
+  --color-accent-primary: #ffd700;  /* Oro holográfico (acción principal) */
+  --color-accent-secondary: #00f5ff;/* Cian neón (enlaces, hover) */
+  --color-crisis: #ff6b6b;          /* Rojo suave para alertas de crisis */
+  --color-success: #51cf66;         /* Verde para confirmaciones */
+  --color-warning: #fcc419;         /* Ámbar para advertencias */
+  
+  /* Tipografía - Space Grotesk para títulos, Inter para cuerpo */
+  --font-heading: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace; /* Para código/ejemplos */
+  
+  /* Espaciado y layout */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --container-max: 1200px;
+  
+  /* Accesibilidad */
+  --focus-outline: 3px solid var(--color-accent-secondary);
+  --contrast-min: 4.5; /* WCAG AA para texto normal */
+  
+  /* Animaciones sutiles */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+}
+
+/* 🌙 Tema claro (activado por prefers-color-scheme o toggle manual) */
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-bg: #f8f9ff;
+    --color-bg-elevated: #ffffff;
+    --color-text: #1a1a2e;
+    --color-text-muted: #4a4a6a;
+    --color-accent-primary: #b8860b; /* Oro más oscuro para contraste */
+    --color-accent-secondary: #0077b6;
+  }
+}
+
+/* ♿ ACCESIBILIDAD: Alto contraste forzado si el usuario lo solicita */
+@media (prefers-contrast: high) {
+  :root {
+    --color-bg: #000000;
+    --color-text: #ffffff;
+    --color-accent-primary: #ffff00;
+    --color-accent-secondary: #00ffff;
+    --focus-outline: 4px solid var(--color-accent-primary);
+  }
+}
+
+/* 🧱 BASE RESET + TIPOGRAFÍA */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text);
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
+h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
+
+p { margin-bottom: var(--spacing-md); }
+
+a {
+  color: var(--color-accent-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover, a:focus {
+  color: var(--color-accent-primary);
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* 🧭 LAYOUT UTILITIES */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* 🎯 BOTONES (sistema unificado) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--color-accent-primary);
+  color: #000;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background: #e6c200;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  border-color: var(--color-accent-secondary);
+  color: var(--color-accent-secondary);
+}
+
+.btn-secondary:hover, .btn-secondary:focus {
+  background: rgba(0, 245, 255, 0.1);
+}
+
+.btn-crisis {
+  background: var(--color-crisis);
+  color: #fff;
+  font-weight: 600;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(255, 107, 107, 0); }
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 🧩 COMPONENTES BASE */
+.card {
+  background: var(--color-bg-elevated);
+  border-radius: 12px;
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-accent-primary);
+}
+
+.badge {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 20px;
+  background: rgba(255, 215, 0, 0.15);
+  color: var(--color-accent-primary);
+  margin-right: var(--spacing-xs);
+  margin-bottom: var(--spacing-xs);
+}
+
+.badge.crisis { background: rgba(255, 107, 107, 0.15); color: var(--color-crisis); }
+.badge.info { background: rgba(0, 245, 255, 0.15); color: var(--color-accent-secondary); }
+
+/* 🚨 BANNER DE CRISIS (reutilizable en todos los sitios) */
+.crisis-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, var(--color-crisis), #c92a2a);
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  text-align: center;
+  font-weight: 500;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+.crisis-banner a {
+  color: #fff;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.crisis-banner button {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 4px;
+  margin-left: var(--spacing-md);
+  cursor: pointer;
+}
+
+/* 🧭 NAVEGACIÓN DEL ECOSISTEMA (componente compartido) */
+.eco-nav {
+  position: sticky;
+  top: 40px; /* Debajo del crisis-banner */
+  background: var(--color-bg-elevated);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: var(--spacing-sm) 0;
+  z-index: 999;
+  backdrop-filter: blur(10px);
+}
+
+.eco-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  list-style: none;
+  justify-content: center;
+  padding: 0 var(--spacing-lg);
+}
+
+.eco-nav__link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.eco-nav__link:hover, 
+.eco-nav__link[aria-current="page"] {
+  background: rgba(255, 215, 0, 0.1);
+  color: var(--color-accent-primary);
+}
+
+.eco-nav__link .icon {
+  font-size: 1.1rem;
+}
+
+/* 🗺️ MAPA DEL ECOSISTEMA (modal o sección) */
+.eco-map {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin: var(--spacing-xl) 0;
+}
+
+.eco-map__card {
+  position: relative;
+  overflow: hidden;
+}
+
+.eco-map__card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--color-accent-secondary);
+}
+
+.eco-map__card[data-site="diversi-chem"]::before { background: #9b59b6; }
+.eco-map__card[data-site="dual-scars"]::before { background: #e74c3c; }
+.eco-map__card[data-site="espejo-judas"]::before { background: #3498db; }
+.eco-map__card[data-site="mental-map"]::before { background: #2ecc71; }
+.eco-map__card[data-site="espejo-100"]::before { background: #f39c12; }
+.eco-map__card[data-site="eco-silencio"]::before { background: #ffd700; }
+
+.eco-map__title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.eco-map__description {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-md);
+}
+
+.eco-map__when {
+  font-size: 0.875rem;
+  font-style: italic;
+  color: var(--color-accent-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.eco-map__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-weight: 600;
+}
+
+/* 🧠 UTILIDADES DE ACCESIBILIDAD */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 📱 RESPONSIVE */
+@media (max-width: 768px) {
+  .eco-nav__list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .eco-map {
+    grid-template-columns: 1fr;
+  }
+  
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+```
+
+---
+
+### 📄 `shared/js/eco-core.js` (Núcleo ético compartido)
+
+```javascript
+/**
+ * 🧠 ECO-CORE: Núcleo compartido para los 6 sitios
+ * - Detección de crisis en tiempo real
+ * - Navegación contextual entre sitios
+ * - Analytics anónimo (sin rastreo personal)
+ * - Gestión de preferencias de usuario (tema, idioma, accesibilidad)
+ */
+
+// 🚨 DETECCIÓN DE CRISIS: palabras clave + contexto
+const CRISIS_PATTERNS = {
+  suicide: [
+    'suicidio', 'matarme', 'acabar con todo', 'no quiero vivir', 'desaparecer para siempre',
+    'mejor muerto', 'no aguanto más', 'quiero dejar de existir', 'finalizar', 'terminar'
+  ],
+  selfHarm: [
+    'cortarme', 'lastimarme', 'quemarme', 'autolesión', 'hacerme daño', 'marcas', 'cicatrices'
+  ],
+  violence: [
+    'matar a', 'hacer daño a', 'venganza', 'odio a', 'quiero que sufra', 'destruir'
+  ],
+  chemEmergency: [
+    'overdose', 'sobredosis', 'no respiro', 'me voy a morir', 'corazón rápido', 'desmayo',
+    'chemrape', 'me drogaron', 'no recuerdo', 'me hicieron', 'sin consentimiento'
+  ],
+  abuseCrisis: [
+    'me está controlando', 'no me deja', 'me amenaza', 'tengo miedo de', 'no puedo salir',
+    'me quita el teléfono', 'me revisa', 'no puedo hablar con nadie'
+  ]
+};
+
+export function detectCrisis(text, context = {}) {
+  const lower = text.toLowerCase();
+  const detected = [];
+  
+  for (const [type, keywords] of Object.entries(CRISIS_PATTERNS)) {
+    if (keywords.some(kw => lower.includes(kw))) {
+      detected.push(type);
+    }
+  }
+  
+  // Contexto adicional: si hay múltiples indicadores o patrones temporales
+  if (context?.frequency > 3 || context?.escalation) {
+    detected.push('pattern_escalation');
+  }
+  
+  return {
+    isCrisis: detected.length > 0,
+    types: detected,
+    severity: detected.length >= 2 ? 'high' : detected.length === 1 ? 'medium' : 'low',
+    recommendedAction: getRecommendedAction(detected, context)
+  };
+}
+
+function getRecommendedAction(types, context) {
+  if (types.includes('suicide') || types.includes('chemEmergency')) {
+    return {
+      priority: 'immediate',
+      message: '🆘 Esto es una emergencia. Por favor, contacta ayuda ahora:',
+      resources: ['emergency_call', 'crisis_chat', 'trusted_person'],
+      disableAI: true // No generar respuestas de IA en crisis aguda
+    };
+  }
+  
+  if (types.includes('selfHarm') || types.includes('abuseCrisis')) {
+    return {
+      priority: 'urgent',
+      message: '💙 Lo que estás pasando es importante. Aquí hay apoyo disponible:',
+      resources: ['crisis_chat', 'safety_plan', 'legal_resources'],
+      disableAI: false // IA puede ayudar, pero con guardrails estrictos
+    };
+  }
+  
+  return {
+    priority: 'supportive',
+    message: '🤍 Gracias por compartir. Aquí hay recursos que podrían ayudarte:',
+    resources: ['peer_support', 'educational_content', 'self_care_tools'],
+    disableAI: false
+  };
+}
+
+// 🌐 NAVEGACIÓN CONTEXTUAL: recomendar sitios del ecosistema
+export function getContextualRecommendations(currentSite, userContext = {}) {
+  const recommendations = [];
+  
+  // Lógica basada en el sitio actual + contexto del usuario
+  const siteLogic = {
+    'diversi-chem': () => {
+      if (userContext?.mentionsAbuse) {
+        recommendations.push({
+          site: 'dual-scars',
+          reason: 'Si lo que estás viviendo incluye manipulación o falta de consentimiento, este espacio puede ayudarte a documentar y procesar.',
+          urgency: userContext?.crisisDetected ? 'high' : 'medium'
+        });
+      }
+      if (userContext?.existentialQuestions) {
+        recommendations.push({
+          site: 'eco-silencio',
+          reason: 'Si además de lo químico hay preguntas sobre sentido, identidad o vacío, este espacio ofrece reflexión sin juicios.',
+          urgency: 'low'
+        });
+      }
+      recommendations.push({
+        site: 'mental-map',
+        reason: 'Para explorar cómo las sustancias o la neurodivergencia afectan tus relaciones, y cómo establecer límites sanos.',
+        urgency: 'medium'
+      });
+    },
+    
+    'dual-scars': () => {
+      recommendations.push({
+        site: 'espejo-judas',
+        reason: 'Para entender las tácticas de manipulación que viviste y recuperar claridad sobre lo que fue real.',
+        urgency: 'medium'
+      });
+      recommendations.push({
+        site: 'eco-silencio',
+        reason: 'Si después del trauma surgen preguntas sobre identidad, confianza o sentido, este espacio acompaña sin presionar.',
+        urgency: 'low'
+      });
+      if (userContext?.substanceUse) {
+        recommendations.push({
+          site: 'diversi-chem',
+          reason: 'Si el consumo de sustancias está presente en tu historia, aquí encontrarás reducción de daños sin juicios.',
+          urgency: userContext?.currentUse ? 'high' : 'medium'
+        });
+      }
+    },
+    
+    'espejo-judas': () => {
+      recommendations.push({
+        site: 'dual-scars',
+        reason: 'Si lo que viviste incluye manipulación con sustancias o falta de consentimiento, este espacio ofrece herramientas específicas.',
+        urgency: 'medium'
+      });
+      recommendations.push({
+        site: 'mental-map',
+        reason: 'Para evaluar patrones en tus relaciones actuales y fortalecer tu capacidad de detectar señales tempranas.',
+        urgency: 'medium'
+      });
+    },
+    
+    'mental-map': () => {
+      if (userContext?.detectedAbuse) {
+        recommendations.push({
+          site: 'dual-scars',
+          reason: 'Si el radar detectó patrones de alto riesgo, este espacio te ayuda a documentar, procesar y planificar seguridad.',
+          urgency: 'high'
+        });
+      }
+      recommendations.push({
+        site: 'espejo-judas',
+        reason: 'Para profundizar en el diccionario del abuso y entender las tácticas que podrías estar experimentando.',
+        urgency: 'medium'
+      });
+    },
+    
+    'espejo-100': () => {
+      if (userContext?.crisisDetected) {
+        recommendations.push({
+          site: 'eco-silencio',
+          reason: 'Si las preguntas existenciales te generan angustia intensa, este espacio ofrece anonimato y respuestas responsables.',
+          urgency: 'high'
+        });
+      }
+      recommendations.push({
+        site: 'mental-map',
+        reason: 'Para explorar cómo tus preguntas sobre identidad, propósito o relaciones se manifiestan en tus vínculos.',
+        urgency: 'low'
+      });
+    },
+    
+    'eco-silencio': () => {
+      if (userContext?.relationshipFocus) {
+        recommendations.push({
+          site: 'mental-map',
+          reason: 'Si tus reflexiones giran en torno a relaciones, este sitio ofrece herramientas prácticas para evaluar y fortalecer vínculos.',
+          urgency: 'medium'
+        });
+      }
+      if (userContext?.traumaHistory) {
+        recommendations.push({
+          site: 'dual-scars',
+          reason: 'Si hay historia de manipulación o abuso, este espacio ofrece validación y herramientas de recuperación.',
+          urgency: 'medium'
+        });
+      }
+    }
+  };
+  
+  if (siteLogic[currentSite]) {
+    siteLogic[currentSite]();
+  }
+  
+  // Ordenar por urgencia
+  return recommendations.sort((a, b) => {
+    const urgencyOrder = { high: 0, medium: 1, low: 2 };
+    return urgencyOrder[a.urgency] - urgencyOrder[b.urgency];
+  });
+}
+
+// 🔒 ANALYTICS ANÓNIMO: solo métricas agregadas, sin datos personales
+export function logAnonymousEvent(eventType, metadata = {}) {
+  // En producción: enviar solo a endpoint que descarta IP/user-agent
+  // En desarrollo: console.log para debugging
+  
+  const safePayload = {
+    event: eventType,
+    timestamp: new Date().toISOString(),
+    site: metadata.site,
+    category: metadata.category, // ej: 'crisis_detected', 'question_asked'
+    // NUNCA incluir: text, userId, IP, device fingerprint
+    aggregated: true
+  };
+  
+  // Solo enviar si el usuario no ha optado por "modo fantasma"
+  if (localStorage.getItem('eco_ghost_mode') !== 'true') {
+    // fetch('/api/anon-log', { method: 'POST', body: JSON.stringify(safePayload) });
+    console.log('[ANON-LOG]', safePayload); // Placeholder
+  }
+}
+
+// 🎨 GESTIÓN DE PREFERENCIAS
+export class UserPreferences {
+  constructor() {
+    this.defaults = {
+      theme: 'system', // 'light' | 'dark' | 'system'
+      language: 'es', // 'es' | 'en' | 'pt'
+      accessibility: {
+        highContrast: false,
+        reduceMotion: false,
+        fontSize: 'medium' // 'small' | 'medium' | 'large'
+      },
+      privacy: {
+        ghostMode: false, // No enviar ni analytics anónimos
+        autoClear: true // Borrar historial local al cerrar pestaña
+      }
+    };
+    this.settings = this.load();
+  }
+  
+  load() {
+    try {
+      const saved = localStorage.getItem('eco_prefs');
+      return saved ? { ...this.defaults, ...JSON.parse(saved) } : this.defaults;
+    } catch {
+      return this.defaults;
+    }
+  }
+  
+  save() {
+    localStorage.setItem('eco_prefs', JSON.stringify(this.settings));
+    this.apply();
+  }
+  
+  apply() {
+    // Aplicar tema
+    if (this.settings.theme !== 'system') {
+      document.documentElement.setAttribute('data-theme', this.settings.theme);
+    }
+    
+    // Aplicar accesibilidad
+    if (this.settings.accessibility.highContrast) {
+      document.body.classList.add('high-contrast');
+    }
+    if (this.settings.accessibility.reduceMotion) {
+      document.body.classList.add('reduce-motion');
+    }
+    if (this.settings.accessibility.fontSize !== 'medium') {
+      document.body.style.fontSize = this.settings.accessibility.fontSize === 'large' ? '1.125rem' : '0.875rem';
+    }
+    
+    // Aplicar idioma (placeholder para i18n real)
+    if (this.settings.language !== 'es') {
+      document.documentElement.lang = this.settings.language;
+    }
+  }
+  
+  update(partial) {
+    this.settings = { ...this.settings, ...partial };
+    this.save();
+  }
+}
+
+// 🚀 INICIALIZACIÓN GLOBAL
+export function initEcoCore(siteName) {
+  // 1. Cargar preferencias
+  const prefs = new UserPreferences();
+  prefs.apply();
+  
+  // 2. Configurar banner de crisis (siempre visible)
+  renderCrisisBanner();
+  
+  // 3. Inicializar navegación del ecosistema
+  renderEcosystemNav(siteName);
+  
+  // 4. Configurar detección de crisis en formularios
+  attachCrisisDetection();
+  
+  // 5. Log de visita anónima
+  logAnonymousEvent('site_visit', { site: siteName });
+  
+  // 6. Configurar atajos de teclado para accesibilidad
+  setupKeyboardShortcuts();
+  
+  console.log(`🌌 Eco-Core initialized for ${siteName}`);
+}
+
+// 🧩 FUNCIONES AUXILIARES (renderizado de componentes compartidos)
+function renderCrisisBanner() {
+  const banner = document.createElement('div');
+  banner.className = 'crisis-banner';
+  banner.setAttribute('role', 'alert');
+  banner.innerHTML = `
+    <span>🆘 Si estás en crisis inmediata: <strong>Llama al 112</strong> o <a href="/shared/crisis-resources.html">ver recursos globales</a></span>
+    <button type="button" id="crisis-banner-close" aria-label="Cerrar banner">✕</button>
+  `;
+  document.body.insertBefore(banner, document.body.firstChild);
+  
+  document.getElementById('crisis-banner-close')?.addEventListener('click', () => {
+    banner.style.display = 'none';
+    logAnonymousEvent('crisis_banner_dismissed');
+  });
+}
+
+function renderEcosystemNav(currentSite) {
+  const nav = document.createElement('nav');
+  nav.className = 'eco-nav';
+  nav.setAttribute('aria-label', 'Navegación del ecosistema Eco-Silencio');
+  
+  const sites = [
+    { id: 'diversi-chem', name: 'Diversi-Chem', icon: '🧠', desc: 'Neuro + reducción de daños' },
+    { id: 'dual-scars', name: 'Dual Scars', icon: '🗡️', desc: 'Gaslighting + chemrape' },
+    { id: 'espejo-judas', name: 'Espejo de Judas', icon: '🪞', desc: 'Manipulación + validación' },
+    { id: 'mental-map', name: 'Mental Map', icon: '🧭', desc: 'Relaciones + empoderamiento' },
+    { id: 'espejo-100', name: 'Espejo de los 100', icon: '❓', desc: 'Preguntas existenciales' },
+    { id: 'eco-silencio', name: 'Eco Silencio', icon: '🌌', desc: 'Reflexión anónima' }
+  ];
+  
+  nav.innerHTML = `
+    <ul class="eco-nav__list">
+      ${sites.map(site => `
+        <li>
+          <a href="https://${site.id}.buildaispace.app" 
+             class="eco-nav__link"
+             ${site.id === currentSite ? 'aria-current="page"' : ''}
+             title="${site.desc}">
+            <span class="icon" aria-hidden="true">${site.icon}</span>
+            <span>${site.name}</span>
+          </a>
+        </li>
+      `).join('')}
+      <li>
+        <button type="button" class="eco-nav__link" id="eco-map-toggle" title="Ver mapa completo del ecosistema">
+          <span class="icon" aria-hidden="true">🗺️</span>
+          <span>Mapa</span>
+        </button>
+      </li>
+    </ul>
+  `;
+  
+  // Insertar después del banner de crisis
+  const banner = document.querySelector('.crisis-banner');
+  banner?.parentNode.insertBefore(nav, banner.nextSibling);
+  
+  // Toggle del mapa del ecosistema
+  document.getElementById('eco-map-toggle')?.addEventListener('click', () => {
+    showEcosystemMapModal();
+  });
+}
+
+function showEcosystemMapModal() {
+  // Implementar modal con el componente shared/components/ecosystem-map.html
+  // Por brevedad, placeholder:
+  alert('🗺️ Mapa del ecosistema: [Implementar modal con descripciones y enlaces cruzados]');
+  logAnonymousEvent('ecosystem_map_opened');
+}
+
+function attachCrisisDetection() {
+  // Escuchar inputs de texto en tiempo real
+  document.querySelectorAll('input[type="text"], textarea').forEach(input => {
+    input.addEventListener('input', (e) => {
+      const result = detectCrisis(e.target.value, {
+        frequency: parseInt(e.target.dataset.crisisCount || '0') + 1
+      });
+      
+      if (result.isCrisis && result.severity === 'high') {
+        e.target.dataset.crisisDetected = 'true';
+        showCrisisIntervention(result);
+      }
+    });
+  });
+}
+
+function showCrisisIntervention(crisisData) {
+  // Mostrar modal de intervención con recursos
+  const modal = document.createElement('div');
+  modal.className = 'crisis-modal';
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
+  modal.innerHTML = `
+    <div class="crisis-modal__content">
+      <h2>🤍 Estamos aquí contigo</h2>
+      <p>${crisisData.recommendedAction.message}</p>
+      <ul class="crisis-resources-list">
+        ${crisisData.recommendedAction.resources.map(res => `
+          <li><a href="/shared/crisis-resources.html#${res}">${getResourceLabel(res)}</a></li>
+        `).join('')}
+      </ul>
+      <div class="crisis-modal__actions">
+        <button class="btn btn-crisis" id="crisis-call">📞 Llamar ahora</button>
+        <button class="btn btn-secondary" id="crisis-chat">💬 Chat de crisis</button>
+        <button class="btn btn-ghost" id="crisis-close">Seguir explorando</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  
+  // Event listeners
+  document.getElementById('crisis-call')?.addEventListener('click', () => {
+    window.location.href = 'tel:112';
+  });
+  document.getElementById('crisis-chat')?.addEventListener('click', () => {
+    window.open('https://www.crisistextline.org', '_blank');
+  });
+  document.getElementById('crisis-close')?.addEventListener('click', () => {
+    modal.remove();
+  });
+  
+  logAnonymousEvent('crisis_intervention_shown', { severity: crisisData.severity });
+}
+
+function getResourceLabel(key) {
+  const labels = {
+    emergency_call: '📞 Llamada de emergencia (112)',
+    crisis_chat: '💬 Chat de crisis anónimo',
+    trusted_person: '👥 Contactar a alguien de confianza',
+    safety_plan: '📋 Plan de seguridad personal',
+    legal_resources: '⚖️ Recursos legales',
+    peer_support: '🤝 Apoyo entre pares',
+    educational_content: '📚 Contenido educativo',
+    self_care_tools: '🧘 Herramientas de autocuidado'
+  };
+  return labels[key] || key;
+}
+
+function setupKeyboardShortcuts() {
+  // Ctrl+Shift+C: Abrir recursos de crisis rápidamente
+  document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'c') {
+      e.preventDefault();
+      window.location.href = '/shared/crisis-resources.html';
+    }
+  });
+}
+```
+
+---
+
+## 🧠 SITIO 1: DIVERSI-CHEM (Reducción de daños + neurodivergencia)
+
+### 📄 `sites/diversi-chem/index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Diversi-Chem: reducción de daños sin juicios para personas neurodivergentes, queer, y en contextos de chemsex o uso de sustancias."/>
+  <title>Diversi-Chem | Reducción de daños neuroafirmativa</title>
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="/shared/css/design-system.css"/>
+  <link rel="stylesheet" href="/shared/css/components.css"/>
+  
+  <!-- Site-specific CSS -->
+  <link rel="stylesheet" href="/sites/diversi-chem/css/main.css"/>
+  
+  <!-- Fuentes (cargadas localmente para privacidad) -->
+  <link rel="preload" href="/shared/fonts/SpaceGrotesk-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/shared/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+<body>
+  
+  <!-- Eco-Core se inicializa aquí -->
+  <script type="module">
+    import { initEcoCore } from '/shared/js/eco-core.js';
+    initEcoCore('diversi-chem');
+  </script>
+  
+  <!-- Contenido principal -->
+  <main class="container">
+    
+    <!-- Hero -->
+    <header class="hero">
+      <h1>DIVERSI-CHEM</h1>
+      <p class="hero-subtitle">
+        Reducción de daños sin juicios para mentes neurodivergentes, cuerpos queer, y contextos de chemsex o uso de sustancias.<br/>
+        <strong>No estamos aquí para convencerte de dejar de consumir. Estamos aquí para que, si consumes, lo hagas con la máxima información y el mínimo daño.</strong>
+      </p>
+      <div class="hero-cta">
+        <a href="#multiversos" class="btn btn-primary">Explorar multiversos</a>
+        <a href="#crisis" class="btn btn-crisis">🆘 Estoy en crisis ahora</a>
+      </div>
+    </header>
+    
+    <!-- 🌌 MULTIVERSOS: Guías por contexto -->
+    <section id="multiversos" class="section">
+      <h2>Elige tu multiverso</h2>
+      <p class="section-intro">
+        Cada camino está diseñado para una experiencia específica. No hay jerarquía: todas son válidas.
+      </p>
+      
+      <div class="pathways-grid">
+        <!-- Neuro-Spicy -->
+        <article class="pathway-card" data-pathway="neuro-spicy">
+          <h3 class="pathway-title">🧠 Neuro-Spicy</h3>
+          <p class="pathway-desc">Para TDAH, TEA, dislexia, alta sensibilidad, y otras neurodivergencias en contextos de consumo.</p>
+          <ul class="pathway-topics">
+            <li>Estimulantes + medicación: interacciones reales</li>
+            <li>Sobrecarga sensorial en fiestas: kit de supervivencia</li>
+            <li>Masking + sustancias: cuándo te proteges, cuándo te agotas</li>
+            <li>Scripts para negociar límites cuando la comunicación es difícil</li>
+          </ul>
+          <a href="/sites/diversi-chem/neuro-spicy.html" class="btn btn-secondary">Entrar al multiverso →</a>
+        </article>
+        
+        <!-- Pasiva de After -->
+        <article class="pathway-card" data-pathway="aftercare">
+          <h3 class="pathway-title">🛏️ Pasiva de After</h3>
+          <p class="pathway-desc">Para el día después: integración emocional, cuidado físico, y procesamiento sin culpa.</p>
+          <ul class="pathway-topics">
+            <li>Hangover emocional: por qué duele más que el físico</li>
+            <li>Checklist post-consumo: hidratación, sueño, conexión</li>
+            <li>Cuándo buscar ayuda: señales de que el "after" no pasa</li>
+            <li>Aftercare queer: cuidado en relaciones no normativas</li>
+          </ul>
+          <a href="/sites/diversi-chem/aftercare.html" class="btn btn-secondary">Entrar al multiverso →</a>
+        </article>
+        
+        <!-- Chemsex Consciente -->
+        <article class="pathway-card" data-pathway="chemsex">
+          <h3 class="pathway-title">💉 Chemsex Consciente</h3>
+          <p class="pathway-desc">Para personas que usan sustancias en contextos sexuales: reducción de riesgos, consentimiento, y placer seguro.</p>
+          <ul class="pathway-topics">
+            <li>PrEP/PEP + sustancias: interacciones que debes conocer</li>
+            <li>Consentimiento bajo influencia: cómo verificarlo (y cómo que te lo verifiquen)</li>
+            <li>Chemrape: señales, documentación, y recursos legales</li>
+            <li>Comunidad y pares: dónde encontrar apoyo sin juicio</li>
+          </ul>
+          <a href="/sites/diversi-chem/chemsex.html" class="btn btn-secondary">Entrar al multiverso →</a>
+        </article>
+        
+        <!-- Trans + Química -->
+        <article class="pathway-card" data-pathway="trans-chem">
+          <h3 class="pathway-title">🏳️‍⚧️ Trans + Química</h3>
+          <p class="pathway-desc">Para personas trans y no binarias: interacciones hormonas-sustancias, disforia en contextos de consumo, y cuidado afirmativo.</p>
+          <ul class="pathway-topics">
+            <li>Hormonas + estimulantes/depresores: lo que la ciencia dice (y lo que no)</li>
+            <li>Disforia en fiestas: estrategias de grounding en tiempo real</li>
+            <li>Spill/leak de voz o expresión: cómo manejarlo sin pánico</li>
+            <li>Redes de cuidado trans: directorio de profesionales afirmativos</li>
+          </ul>
+          <a href="/sites/diversi-chem/trans-chem.html" class="btn btn-secondary">Entrar al multiverso →</a>
+        </article>
+      </div>
+    </section>
+    
+    <!-- 🧰 HERRAMIENTAS PRÁCTICAS -->
+    <section id="tools" class="section">
+      <h2>Herramientas para llevar contigo</h2>
+      
+      <div class="tools-grid">
+        <!-- Calculadora de interacciones -->
+        <div class="tool-card">
+          <h3>🧪 Calculadora de Interacciones</h3>
+          <p>Introduce medicación + sustancia para ver interacciones documentadas (fuentes: Erowid, DanceSafe, literatura clínica).</p>
+          <form id="interaction-checker" class="tool-form">
+            <label for="medication">Medicación (ej: metilfenidato, sertralina, estradiol):</label>
+            <input type="text" id="medication" name="medication" list="med-list" placeholder="Escribe o elige...">
+            <datalist id="med-list">
+              <option value="Metilfenidato (Concerta, Rubifen)">
+              <option value="Lisdexanfetamina (Elvanse)">
+              <option value="Sertralina (Zoloft)">
+              <option value="Fluoxetina (Prozac)">
+              <option value="Estradiol (programa de afirmación)">
+              <option value="Espironolactona">
+              <option value="Bupropión">
+            </datalist>
+            
+            <label for="substance">Sustancia (ej: cocaína, MDMA, alcohol, GHB):</label>
+            <input type="text" id="substance" name="substance" list="sub-list" placeholder="Escribe o elige...">
+            <datalist id="sub-list">
+              <option value="Cocaína">
+              <option value="MDMA (éxtasis, molly)">
+              <option value="Alcohol">
+              <option value="GHB/GBL">
+              <option value="Ketamina">
+              <option value="Cannabis">
+              <option value="LSD">
+              <option value="Psilocibina">
+            </datalist>
+            
+            <button type="submit" class="btn btn-primary">Ver interacciones</button>
+          </form>
+          <div id="interaction-result" class="tool-result" aria-live="polite"></div>
+        </div>
+        
+        <!-- Kit de emergencia sensorial -->
+        <div class="tool-card">
+          <h3>🎧 Kit de Emergencia Sensorial</h3>
+          <p>Para cuando el entorno te sobrepasa: herramientas inmediatas para regular el sistema nervioso.</p>
+          <ul class="tool-list">
+            <li><strong>Audífonos con cancelación:</strong> Reduce estímulos auditivos en tiempo real</li>
+            <li><strong>Gafas de sol o visera:</strong> Disminuye la sobrecarga visual</li>
+            <li><strong>Objeto de stimming discreto:</strong> Fidget toy, anillo texturizado, pulsera</li>
+            <li><strong>Señal acordada con persona de confianza:</strong> Para salir sin explicaciones</li>
+            <li><strong>App de grounding:</strong> <a href="https://www.calm.com" target="_blank">Calm</a> o <a href="https://www.headspace.com" target="_blank">Headspace</a> (modo offline)</li>
+          </ul>
+          <button class="btn btn-secondary" id="generate-kit">Generar kit personalizado</button>
+        </div>
+        
+        <!-- Diario de consumo consciente -->
+        <div class="tool-card">
+          <h3>📓 Diario de Consumo Consciente</h3>
+          <p>Registra dosis, contexto, efectos y emociones. Solo en tu dispositivo, con encriptación local.</p>
+          <button class="btn btn-secondary" id="open-journal">Abrir diario (local)</button>
+          <p class="tool-note"><small>🔒 Tus datos nunca salen de este dispositivo. Puedes exportar para compartir con profesionales si lo deseas.</small></p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 🤝 RECOMENDACIONES DEL ECOSISTEMA -->
+    <section id="ecosystem-recs" class="section">
+      <h2>¿Necesitas algo más?</h2>
+      <p class="section-intro">
+        Según lo que estás explorando aquí, estos otros espacios del ecosistema podrían resonar contigo:
+      </p>
+      
+      <div id="contextual-recs" class="eco-recs-grid">
+        <!-- Se llena dinámicamente con eco-core.js -->
+        <div class="eco-rec-card">
+          <h4>🗡️ Dual Scars</h4>
+          <p>Si lo que estás viviendo incluye manipulación, falta de consentimiento, o chemrape, este espacio te ayuda a documentar y procesar con validación.</p>
+          <a href="https://dual-scars-my-app-28791d6c.buildaispace.app" class="btn btn-secondary">Visitar Dual Scars →</a>
+        </div>
+        <div class="eco-rec-card">
+          <h4>🧭 Mental Map</h4>
+          <p>Para explorar cómo las sustancias o la neurodivergencia afectan tus relaciones, y cómo establecer límites sanos sin culpa.</p>
+          <a href="https://mental-map-my-app-08b82d77.buildaispace.app" class="btn btn-secondary">Visitar Mental Map →</a>
+        </div>
+        <div class="eco-rec-card">
+          <h4>🌌 Eco Silencio</h4>
+          <p>Si además de lo químico hay preguntas sobre identidad, sentido o vacío, este espacio ofrece reflexión anónima sin validación vacía.</p>
+          <a href="https://eco-silencio-0cbb64b1.buildaispace.app" class="btn btn-secondary">Visitar Eco Silencio →</a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 🆘 CRISIS + RECURSOS -->
+    <section id="crisis" class="section crisis-section">
+      <h2>🆘 Si estás en crisis ahora</h2>
+      <div class="crisis-grid">
+        <div class="crisis-card">
+          <h3>📞 Llamada inmediata</h3>
+          <p><strong>112</strong> (Emergencias médicas, España/Europa)<br/>
+          <strong>024</strong> (Línea de prevención del suicidio, España)<br/>
+          <strong>988</strong> (Suicide & Crisis Lifeline, EE.UU.)</p>
+        </div>
+        <div class="crisis-card">
+          <h3>💬 Chat anónimo</h3>
+          <p><a href="https://www.crisistextline.org" target="_blank">Crisis Text Line</a> (ES/EN/PT)<br/>
+          <a href="https://www.befrienders.org" target="_blank">Befrienders Worldwide</a> (global)</p>
+        </div>
+        <div class="crisis-card">
+          <h3>⚕️ Reducción de daños específica</h3>
+          <p><a href="https://www.dancesafe.org" target="_blank">DanceSafe</a> (testing de sustancias)<br/>
+          <a href="https://www.erowid.org" target="_blank">Erowid</a> (experiencias y química)<br/>
+          <a href="https://www.psychonautwiki.org" target="_blank">PsychonautWiki</a> (guías de reducción de daños)</p>
+        </div>
+      </div>
+      <p class="crisis-note">
+        <strong>Nota ética:</strong> Diversi-Chem no promueve el consumo de sustancias ilegales. Ofrecemos información basada en evidencia para reducir daños en contextos donde el consumo ya ocurre. Si buscas dejar de consumir, <a href="#resources">aquí hay recursos de apoyo</a>.
+      </p>
+    </section>
+    
+  </main>
+  
+  <!-- Footer ético compartido -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        <strong>Diversi-Chem</strong> es un proyecto de reducción de daños neuroafirmativa. 
+        <a href="/shared/ethical-disclaimer.html">Leer disclaimer completo</a>.<br/>
+        🌐 Parte del ecosistema <a href="https://eco-silencio-0cbb64b1.buildaispace.app">Eco-Silencio</a>: 
+        <a href="https://diversi-chem-197c0447.buildaispace.app">Diversi-Chem</a> • 
+        <a href="https://dual-scars-my-app-28791d6c.buildaispace.app">Dual Scars</a> • 
+        <a href="https://espejo-de-los-100-9720a1f1.buildaispace.app">Espejo de los 100</a> • 
+        <a href="https://mental-map-my-app-08b82d77.buildaispace.app">Mental Map</a> • 
+        <a href="https://refleja-tu-fuerza-79908c98.buildaispace.app">Espejo de Judas</a> • 
+        <a href="https://eco-silencio-0cbb64b1.buildaispace.app">Eco Silencio</a>
+      </p>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script type="module" src="/shared/js/eco-core.js"></script>
+  <script type="module" src="/sites/diversi-chem/js/main.js"></script>
+  <script type="module" src="/sites/diversi-chem/js/interaction-checker.js"></script>
+  <script type="module" src="/sites/diversi-chem/js/sensory-kit.js"></script>
+  
+</body>
+</html>
+```
+
+### 📄 `sites/diversi-chem/data/pathways.json` (Contenido curado - extracto)
+
+```json
+{
+  "pathways": {
+    "neuro-spicy": {
+      "title": "Neuro-Spicy: Consumo + neurodivergencia",
+      "description": "Guías para personas TDAH, TEA, disléxicas, altamente sensibles, o con otras neurodivergencias que navegan contextos de consumo de sustancias.",
+      "guides": [
+        {
+          "id": "ns_01",
+          "title": "Estimulantes recetados + estimulantes recreativos: ¿qué dice la ciencia?",
+          "content": "El metilfenidato (Concerta, Rubifen) y la lisdexanfetamina (Elvanse) actúan sobre dopamina y noradrenalina, al igual que la cocaína o las anfetaminas recreativas. Combinarlos puede:\n\n• Aumentar riesgo de taquicardia, hipertensión o ansiedad extrema\n• Acortar la duración del efecto recreativo (tolerancia cruzada)\n• Generar un 'crash' más intenso después\n\n🔹 Estrategia de reducción de daños:\n- Esperar al menos 12h desde la última dosis recetada antes de consumir recreativamente\n- Reducir la dosis recreativa a 1/3 o 1/2 de lo habitual\n- Hidratación + electrolitos durante y después\n- Tener un 'buddy' que conozca tu medicación\n\n⚠️ Si tomas IMAOs (poco común en TDAH pero posible): NUNCA combinar con MDMA, cocaína o estimulantes. Riesgo de crisis hipertensiva.\n\n📚 Fuentes: [NIH, 2023], [DanceSafe Interaction Guide], [ADHD & Substance Use: Clinical Review, 2022]",
+          "tags": ["TDAH", "estimulantes", "interacciones", "medicación"],
+          "crisis_keywords": ["taquicardia", "dolor pecho", "desmayo", "ataque pánico"],
+          "related_sites": ["dual-scars", "mental-map"]
+        },
+        {
+          "id": "ns_02",
+          "title": "Sobrecarga sensorial en fiestas: kit de supervivencia en tiempo real",
+          "content": "Para muchas personas neurodivergentes, luces estroboscópicas, bass intenso, multitudes y olores fuertes pueden desencadenar meltdown o shutdown, especialmente bajo influencia de sustancias.\n\n🔹 Kit de emergencia sensorial (llevar siempre):\n• Tapones de oídos de alta fidelidad (ej: Loop Experience, Eargasm) → reducen volumen sin distorsionar música\n• Gafas de sol con filtro azul o lentes FL-41 → disminuyen sensibilidad a luces\n• Objeto de stimming discreto: anillo texturizado, fidget cube pequeño, pulsera de cuentas\n• Tarjeta de comunicación: \"Necesito un momento tranquilo\" en varios idiomas / con pictogramas\n• Persona de confianza con señal acordada (ej: tocarse la oreja = \"sácame de aquí\")\n\n🔹 Si sientes que vas a colapsar:\n1. Sal del área principal (busca baños, pasillos, exteriores)\n2. Aplica grounding 5-4-3-2-1: 5 cosas que ves, 4 que tocas, 3 que oyes, 2 que hueles, 1 que saboreas\n3. Respiración en caja: 4s inhalar, 4s retener, 4s exhalar, 4s pausa\n4. Si estás con otras personas: usa tu tarjeta o señal. No tienes que explicar.\n\n💡 Nota: El masking (ocultar tu neurodivergencia) consume energía extra. En contextos de consumo, ese agotamiento llega antes. Permitirte stimming o pausas no es 'fallar', es autocuidado.",
+          "tags": ["TEA", "sobrecarga sensorial", "meltdown", "grounding"],
+          "crisis_keywords": ["no puedo respirar", "me voy a desmayar", "quiero salir ya"],
+          "related_sites": ["eco-silencio", "mental-map"]
+        }
+        // ... 8 guías más para Neuro-Spicy
+      ],
+      "quick_references": {
+        "medication_interactions": "https://www.drugs.com/interactions-check.php",
+        "sensory_tools": "https://neuroclastic.com/sensory-tools-guide/",
+        "community_support": "https://www.adhdawarenessmonth.org/support-groups/"
+      }
+    },
+    "chemsex": {
+      "title": "Chemsex Consciente: Placer, consentimiento y reducción de riesgos",
+      "description": "Para personas que usan sustancias en contextos sexuales: información basada en evidencia, sin moralismo, centrada en autonomía y seguridad.",
+      "guides": [
+        {
+          "id": "cs_01",
+          "title": "PrEP/PEP + sustancias: interacciones que debes conocer",
+          "content": "La PrEP (Truvada, Descovy) y el PEP son herramientas cruciales de prevención del VIH. Algunas sustancias pueden afectar su eficacia o aumentar efectos secundarios:\n\n🔹 Alcohol + PrEP:\n• No reduce la eficacia de la PrEP\n• PERO: el alcohol disminuye la adherencia (olvidar dosis) y aumenta conductas de riesgo\n• Estrategia: programar alarma para la dosis, llevar pastillero discreto\n\n🔹 GHB/GBL + PrEP:\n• Sin interacción farmacológica directa documentada\n• PERO: GHB puede causar amnesia anterógrada → riesgo de olvidar si tomaste PrEP o si hubo consentimiento\n• Estrategia: usar app de registro de dosis con recordatorio visual, acordar 'check-ins' con pareja(s)\n\n🔹 Estimulantes (cocaína, metanfetamina) + PrEP:\n• No hay interacción directa, pero el uso prolongado puede afectar función renal\n• La PrEP se elimina por riñón → si hay daño renal, ajustar dosis con médico\n• Estrategia: chequeos renales cada 3-6 meses si hay uso frecuente de estimulantes\n\n⚠️ PEP (post-exposición):\n• Debe iniciarse dentro de las 72h (ideal <24h) tras posible exposición al VIH\n• Si hubo chemsex sin consentimiento o con fallo de barrera: acudir a urgencias INMEDIATAMENTE\n• No esperar a 'ver si pasa algo'. El tiempo es crítico.\n\n📚 Fuentes: [EACS Guidelines 2023], [PrEP Watch: Drug Interactions], [GESIDA: Chemsex y VIH]",
+          "tags": ["PrEP", "PEP", "VIH", "GHB", "consentimiento"],
+          "crisis_keywords": ["me drogaron", "no recuerdo", "sin consentimiento", "chemrape"],
+          "related_sites": ["dual-scars", "espejo-judas"],
+          "crisis_redirect": "dual-scars" // Si se detecta chemrape, priorizar enlace a Dual Scars
+        },
+        {
+          "id": "cs_02",
+          "title": "Consentimiento bajo influencia: cómo verificarlo (y cómo que te lo verifiquen)",
+          "content": "El consentimiento no es un 'sí' una vez. Es un proceso continuo, reversible, y requiere capacidad de decisión.\n\n🔹 Señales de que el consentimiento NO es válido bajo influencia:\n• Persona no puede articular frases completas\n• No recuerda haber acordado algo hace 10 minutos\n• Dice 'no sé', 'igual', 'tú decides' de forma repetida\n• Cambia de opinión y la otra persona insiste\n• Hay desequilibrio de poder (edad, experiencia, estatus)\n\n🔹 Práctica de consentimiento consciente en chemsex:\n1. ANTES de consumir: acordar límites, señales de parada, y qué hacer si alguien cambia de opinión\n2. DURANTE: check-ins verbales cada 20-30 min: \"¿Sigues cómodo/a?\", \"¿Quieres parar o cambiar?\"\n3. DESPUÉS: debriefing sin juicio: \"¿Cómo te sentiste?\", \"¿Hay algo que quieras ajustar para la próxima?\"\n\n🔹 Frases útiles para verificar consentimiento:\n• \"¿Te apetece seguir o paramos?\" (ofrecer salida fácil)\n• \"Recuerda que puedes cambiar de opinión en cualquier momento\" (normalizar la reversibilidad)\n• \"¿Prefieres que usemos señal no verbal?\" (para cuando hablar sea difícil)\n\n⚠️ Si hay duda: PARAR. Mejor una pausa incómoda que una violación.\n\n🔹 Si tú estás bajo influencia y quieres asegurar tu consentimiento:\n• Usa una pulsera o señal acordada con tu comunidad: \"Si llevo esto rojo, no toques\"\n• Graba un audio para ti mismo/a ANTES de consumir: \"Hoy quiero/no quiero X. Si no puedo hablar, respeta esto\"\n• Ten una persona 'soberana de confianza' en el espacio: su rol es velar por el consentimiento, no participar\n\n📚 Recursos: [Consent Project: Chemsex Edition], [Brook: Consent and Substances], [Planned Parenthood: Alcohol, Drugs and Consent]",
+          "tags": ["consentimiento", "chemsex", "comunicación", "límites"],
+          "crisis_keywords": ["me obligaron", "no pude decir no", "me da miedo"],
+          "related_sites": ["dual-scars", "espejo-judas", "mental-map"]
+        }
+        // ... 6 guías más para Chemsex
+      ],
+      "emergency_protocols": {
+        "chemrape_suspected": {
+          "immediate_steps": [
+            "No ducharse ni lavarse (preservar evidencia si se desea denunciar)",
+            "Ir a urgencias o centro de atención a víctimas (llevar ropa de repuesto)",
+            "Solicitar kit de violación (forense) dentro de las 72h",
+            "Contactar línea de apoyo: 016 (España) o equivalente local"
+          ],
+          "documentation_tips": [
+            "Escribir inmediatamente: hora, lugar, personas presentes, sustancias consumidas, lo que recuerdas",
+            "Guardar mensajes, pantallazos, ubicaciones (aunque duela revisarlos)",
+            "No borrar nada del teléfono: hacer copia de seguridad en la nube o con persona de confianza"
+          ],
+          "emotional_support": [
+            "No es tu culpa. Nunca lo es.",
+            "La confusión, la culpa o la 'no reacción' son respuestas comunes al trauma.",
+            "Buscar apoyo en pares que entiendan chemsex: [Enlace a comunidad segura]"
+          ],
+          "redirect_to": "dual-scars" // Priorizar navegación a Dual Scars para herramientas específicas
+        }
+      }
+    }
+    // ... pathways para 'aftercare' y 'trans-chem'
+  },
+  "global_resources": {
+    "crisis_lines": {
+      "spain": { "name": "024 - Prevención del suicidio", "phone": "024", "chat": "https://024.info" },
+      "international": { "name": "Befrienders Worldwide", "url": "https://www.befrienders.org" }
+    },
+    "harm_reduction": {
+      "testing": "https://www.dancesafe.org/testing",
+      "interactions": "https://www.psychonautwiki.org/wiki/Interactions",
+      "community": "https://www.harmreduction.org/peer-support/"
+    }
+  }
+}
+```
+
+---
+
+## 🗡️ SITIO 2: DUAL SCARS (Supervivencia a gaslighting + chemrape)
+
+### 📄 `sites/dual-scars/index.html` (Estructura clave)
+
+```html
+<!-- ... head y shared components ... -->
+
+<main class="container">
+  
+  <header class="hero hero-dual">
+    <h1>DUAL SCARS</h1>
+    <p class="hero-subtitle">
+      Herramientas tácticas para sobrevivientes de gaslighting + chemrape.<br/>
+      <strong>No es tu culpa. No estás loco/a. Lo que viviste fue real.</strong>
+    </p>
+    <div class="hero-cta">
+      <button class="btn btn-crisis" id="panic-button">🚨 Modo emergencia (ocultar pantalla)</button>
+      <a href="#evidence" class="btn btn-primary">🗂️ Diario de Evidencias</a>
+    </div>
+  </header>
+  
+  <!-- 🚨 PANIC BUTTON: cambia la pantalla a "receta de cocina" en 1 clic -->
+  <script>
+    document.getElementById('panic-button')?.addEventListener('click', () => {
+      document.body.classList.add('panic-mode');
+      document.title = 'Receta de Tortilla Española | CocinaFácil';
+      document.querySelector('.hero').innerHTML = `
+        <h1>Tortilla Española Clásica</h1>
+        <p>Ingredientes: 6 huevos, 4 patatas medianas, 1 cebolla, aceite de oliva, sal.</p>
+        <p>Pasos: 1) Pelar y cortar patatas... <a href="https://www.recetas.com">Ver receta completa</a></p>
+      `;
+      // Log anónimo de activación
+      logAnonymousEvent('panic_button_activated', { site: 'dual-scars' });
+    });
+  </script>
+  
+  <!-- 🗂️ DIARIO DE EVIDENCIAS (cifrado local) -->
+  <section id="evidence" class="section">
+    <h2>🗂️ Diario de Evidencias</h2>
+    <p class="section-intro">
+      Documenta patrones de manipulación o abuso. <strong>Tus datos nunca salen de este dispositivo</strong> sin tu consentimiento explícito.
+    </p>
+    
+    <div class="journal-container">
+      <!-- Formulario de entrada -->
+      <form id="evidence-form" class="journal-form">
+        <label for="entry-date">Fecha y hora (se autocompleta):</label>
+        <input type="datetime-local" id="entry-date" name="date" readonly>
+        
+        <label for="entry-type">Tipo de incidente:</label>
+        <select id="entry-type" name="type" required>
+          <option value="">Selecciona...</option>
+          <option value="gaslighting">Gaslighting (dudar de mi memoria/realidad)</option>
+          <option value="chemrape">Chemrape (sustancias sin consentimiento)</option>
+          <option value="isolation">Aislamiento (me aleja de mi red)</option>
+          <option value="threats">Amenazas o intimidación</option>
+          <option value="digital_abuse">Abuso digital (control de teléfono/redes)</option>
+          <option value="other">Otro</option>
+        </select>
+        
+        <label for="entry-text">Descripción (solo tú puedes leer esto):</label>
+        <textarea id="entry-text" name="text" rows="5" placeholder="Describe lo que pasó, con detalles concretos: frases, horas, testigos..." required></textarea>
+        
+        <label for="entry-tags">Etiquetas (para buscar después):</label>
+        <input type="text" id="entry-tags" name="tags" placeholder="ej: 'mentira', 'droga', 'amenaza', 'testigo: Ana'">
+        
+        <div class="form-options">
+          <label class="checkbox">
+            <input type="checkbox" name="exportable" id="exportable">
+            <span>Marcar como "exportable" (para posible uso legal)</span>
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="trigger-warning" id="trigger-warning">
+            <span>Añadir advertencia de contenido sensible</span>
+          </label>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">💾 Guardar entrada (cifrada)</button>
+      </form>
+      
+      <!-- Lista de entradas (desencriptadas al visualizar) -->
+      <div id="entries-list" class="entries-list" aria-live="polite">
+        <!-- Se llena con JS -->
+        <p class="entries-empty">Aún no hay entradas. Tu primera documentación empieza ahora.</p>
+      </div>
+      
+      <!-- Acciones sobre entradas -->
+      <div class="entries-actions">
+        <button class="btn btn-secondary" id="export-selected">📤 Exportar seleccionadas (PDF)</button>
+        <button class="btn btn-ghost" id="clear-all">🗑️ Borrar todo (irreversible)</button>
+      </div>
+    </div>
+    
+    <p class="journal-note">
+      <strong>🔒 Seguridad:</strong> Las entradas se cifran con Web Crypto API usando una clave derivada de tu contraseña (nunca almacenada). 
+      Para exportar, deberás introducir la contraseña. 
+      <a href="/sites/dual-scars/security-guide.html">Guía completa de seguridad digital</a>.
+    </p>
+  </section>
+  
+  <!-- 🧭 MANUAL DE TÁCTICAS: reconocer y contrarrestar -->
+  <section id="tactics" class="section">
+    <h2>🧭 Manual de Tácticas</h2>
+    <p class="section-intro">
+      Nombres reales para lo que viviste. Estrategias concretas para recuperar tu poder.
+    </p>
+    
+    <div class="tactics-grid">
+      <!-- DARVO -->
+      <article class="tactic-card" data-tactic="darvo">
+        <h3>DARVO: Negar, Atacar, Invertir Víctima y Ofensor</h3>
+        <p><strong>Qué es:</strong> Cuando niega lo que hizo, te ataca por "acusar", y termina haciéndote sentir culpable a ti.</p>
+        <p><strong>Ejemplo real:</strong> "Nunca te drogué, tú bebiste igual que yo. Además, ¿por qué me acusas ahora? Me estás haciendo daño a mí."</p>
+        <p><strong>Contra-estrategia:</strong> No debates la realidad. Documenta. Busca testigos. Repite: "Yo recuerdo lo que viví".</p>
+        <button class="btn btn-sm btn-secondary" data-modal="darvo-examples">Ver más ejemplos</button>
+      </article>
+      
+      <!-- Love Bombing -->
+      <article class="tactic-card" data-tactic="love-bombing">
+        <h3>Love Bombing: Bombardeo de amor para desarmar</h3>
+        <p><strong>Qué es:</strong> Exceso repentino de atención, regalos o promesas después de un episodio de abuso, para confundirte y evitar que te alejes.</p>
+        <p><strong>Ejemplo real:</strong> Tras una discusión violenta, te llena de mensajes: "Eres mi todo, sin ti no soy nada, te prometo que cambiaré".</p>
+        <p><strong>Contra-estrategia:</strong> Observa patrones, no promesas. Pregúntate: "¿Este comportamiento es sostenido o solo aparece cuando teme perderme?"</p>
+        <button class="btn btn-sm btn-secondary" data-modal="lovebombing-patterns">Ver patrón cíclico</button>
+      </article>
+      
+      <!-- Chemrape específico -->
+      <article class="tactic-card crisis" data-tactic="chemrape">
+        <h3>💉 Chemrape: Sustancias sin consentimiento</h3>
+        <p><strong>Qué es:</strong> Administrar sustancias (con o sin tu conocimiento) para disminuir tu capacidad de consentimiento o memoria.</p>
+        <p><strong>Señales de alerta:</strong> "Toma esto para relajarte", "Es solo una copa", "No seas aburrido/a", o sustancia apareciendo en tu bebida sin que la pidas.</p>
+        <p><strong>Acción inmediata:</strong> Si sospechas: 1) Sal del lugar, 2) Contacta a persona de confianza, 3) Guarda evidencia (bebida, mensajes), 4) Considera atención médica/legal.</p>
+        <a href="#evidence" class="btn btn-sm btn-crisis">🗂️ Documentar ahora</a>
+      </article>
+    </div>
+  </section>
+  
+  <!-- 🤝 RECOMENDACIONES DEL ECOSISTEMA -->
+  <section id="ecosystem-recs" class="section">
+    <h2>¿Necesitas algo más?</h2>
+    <div id="contextual-recs" class="eco-recs-grid">
+      <!-- Dinámico con eco-core.js -->
+      <div class="eco-rec-card">
+        <h4>🪞 Espejo de Judas</h4>
+        <p>Para profundizar en el diccionario del abuso y entender las tácticas de manipulación con ejemplos detallados.</p>
+        <a href="https://espejo-de-los-100-9720a1f1.buildaispace.app" class="btn btn-secondary">Visitar Espejo de Judas →</a>
+      </div>
+      <div class="eco-rec-card">
+        <h4>🧠 Diversi-Chem</h4>
+        <p>Si el consumo de sustancias está presente en tu historia, aquí encontrarás reducción de daños sin juicios + interacciones con medicación.</p>
+        <a href="https://diversi-chem-197c0447.buildaispace.app" class="btn btn-secondary">Visitar Diversi-Chem →</a>
+      </div>
+      <div class="eco-rec-card">
+        <h4>🌌 Eco Silencio</h4>
+        <p>Si después del trauma surgen preguntas sobre identidad, confianza o sentido, este espacio acompaña sin presionar.</p>
+        <a href="https://eco-silencio-0cbb64b1.buildaispace.app" class="btn btn-secondary">Visitar Eco Silencio →</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ... crisis section y footer ... -->
+  
+</main>
+```
+
+*(Por limitación de espacio, muestro la estructura completa de 2 sitios. Los otros 4 siguen el mismo patrón: HTML profesional, contenido curado en JSON, navegación cruzada, y guardrails éticos.)*
+
+---
+
+## 🔗 NAVEGACIÓN CRUZADA: CÓMO FUNCIONA EL "CIRCUITO COMPLETO"
+
+### 📄 `shared/components/ecosystem-map.html` (Modal reutilizable)
+
+```html
+<!-- Modal: Mapa del Ecosistema Eco-Silencio -->
+<div id="ecosystem-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="eco-map-title">
+  <div class="modal-content">
+    <button class="modal-close" aria-label="Cerrar mapa">&times;</button>
+    
+    <h2 id="eco-map-title">🗺️ Mapa del Ecosistema Eco-Silencio</h2>
+    <p class="modal-intro">
+      Seis espacios interconectados. Un solo principio: <strong>acompañar sin invadir, validar sin vaciar, proteger sin controlar</strong>.<br/>
+      Elige según tu necesidad actual. Puedes volver a este mapa en cualquier momento.
+    </p>
+    
+    <div class="eco-map-grid">
+      <!-- Cada sitio con: icono, nombre, para quién es, cuándo usarlo, enlace -->
+      <a href="https://diversi-chem-197c0447.buildaispace.app" class="eco-map-card" data-site="diversi-chem">
+        <span class="eco-map-icon">🧠</span>
+        <h3>Diversi-Chem</h3>
+        <p class="eco-map-for">Para: Personas neurodivergentes, queer, o en contextos de chemsex/uso de sustancias.</p>
+        <p class="eco-map-when">Úsalo cuando: Necesites información sobre interacciones, reducción de daños, o cuidado sensorial sin juicios.</p>
+        <span class="eco-map-link">Explorar →</span>
+      </a>
+      
+      <a href="https://dual-scars-my-app-28791d6c.buildaispace.app" class="eco-map-card" data-site="dual-scars">
+        <span class="eco-map-icon">🗡️</span>
+        <h3>Dual Scars</h3>
+        <p class="eco-map-for">Para: Sobrevivientes de gaslighting, chemrape, o manipulación con sustancias.</p>
+        <p class="eco-map-when">Úsalo cuando: Necesites documentar patrones, validar tu experiencia, o planificar seguridad.</p>
+        <span class="eco-map-link">Explorar →</span>
+      </a>
+      
+      <a href="https://refleja-tu-fuerza-79908c98.buildaispace.app" class="eco-map-card" data-site="espejo-judas">
+        <span class="eco-map-icon">🪞</span>
+        <h3>Espejo de Judas</h3>
+        <p class="eco-map-for">Para: Personas que buscan entender tácticas de manipulación y recuperar claridad.</p>
+        <p class="eco-map-when">Úsalo cuando: Quieras nombrar lo que viviste, aprender contra-estrategias, o validar tu percepción.</p>
+        <span class="eco-map-link">Explorar →</span>
+      </a>
+      
+      <a href="https://mental-map-my-app-08b82d77.buildaispace.app" class="eco-map-card" data-site="mental-map">
+        <span class="eco-map-icon">🧭</span>
+        <h3>Mental Map</h3>
+        <p class="eco-map-for">Para: Quienes quieren evaluar patrones en sus relaciones y fortalecer límites.</p>
+        <p class="eco-map-when">Úsalo cuando: Sientas confusión en vínculos, quieras detectar señales tempranas, o empoderarte en decisiones.</p>
+        <span class="eco-map-link">Explorar →</span>
+      </a>
+      
+      <a href="https://espejo-de-los-100-9720a1f1.buildaispace.app" class="eco-map-card" data-site="espejo-100">
+        <span class="eco-map-icon">❓</span>
+        <h3>Espejo de los 100</h3>
+        <p class="eco-map-for">Para: Personas con preguntas existenciales que buscan reflexión, no respuestas vacías.</p>
+        <p class="eco-map-when">Úsalo cuando: Te preguntes sobre identidad, sentido, muerte, o vacío, y quieras profundidad sin dogmas.</p>
+        <span class="eco-map-link">Explorar →</span>
+      </a>
+      
+      <a href="https://eco-silencio-0cbb64b1.buildaispace.app" class="eco-map-card" data-site="eco-silencio">
+        <span class="eco-map-icon">🌌</span>
+        <h3>Eco Silencio</h3>
+        <p class="eco-map-for">Para: Quienes necesitan un espacio anónimo para soltar pensamientos sin juicio.</p>
+        <p class="eco-map-when">Úsalo cuando: Quieras escribir sin registro, explorar preguntas íntimas, o recibir respuestas responsables.</p>
+        <span class="eco-map-link">Explorar →</span>
+      </a>
+    </div>
+    
+    <div class="modal-footer">
+      <p><small>🔗 Todos los sitios comparten: privacidad por diseño, detección de crisis, y ética de no daño. <a href="/shared/ethical-framework.html">Ver marco ético completo</a>.</small></p>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+## ⚙️ BACKEND UNIFICADO: API CON GUARDRAILS ÉTICOS
+
+### 📄 `backend/routes/ai-response.js` (Endpoint de IA responsable)
+
+```javascript
+// backend/routes/ai-response.js
+const express = require('express');
+const router = express.Router();
+const { buildSafePrompt, detectCrisis } = require('../middleware/aiPromptGuard');
+const { getCrisisResources } = require('../utils/crisisResources');
+const contentDB = require('../data/content-index.json'); // Índice unificado de los 6 sitios
+
+/**
+ * POST /api/ai/answer
+ * Body: { question: string, site: string, context?: object }
+ * Response: Respuesta responsable con guardrails éticos
+ */
+router.post('/answer', async (req, res) => {
+  try {
+    const { question, site, context = {} } = req.body;
+    
+    // Validación básica
+    if (!question || question.trim().length < 5) {
+      return res.status(400).json({ error: 'La pregunta debe tener al menos 5 caracteres.' });
+    }
+    
+    // 1. Detectar crisis ANTES de cualquier procesamiento
+    const crisisCheck = detectCrisis(question, { site, ...context });
+    
+    if (crisisCheck.isCrisis && crisisCheck.severity === 'high') {
+      // Respuesta de crisis: sin IA, solo recursos
+      return res.json({
+        type: 'crisis',
+        message: crisisCheck.recommendedAction.message,
+        resources: getCrisisResources(crisisCheck.types),
+        disableFollowUp: true,
+        redirect: crisisCheck.recommendedAction.redirect || null
+      });
+    }
+    
+    // 2. Buscar respuesta predefinida en base curada (más segura que IA)
+    const predefined = findPredefinedAnswer(question, site);
+    if (predefined) {
+      return res.json({
+        type: 'predefined',
+        answer: predefined.respuesta,
+        source: predefined.source,
+        relatedQuestions: predefined.related || [],
+        ecosystemLinks: predefined.related_sites?.map(siteId => getSiteLink(siteId)) || []
+      });
+    }
+    
+    // 3. Si no hay respuesta curada: generar con IA + guardrails estrictos
+    const { prompt, requiresHumanReview } = buildSafePrompt(question, site, context);
+    
+    // 4. Llamar a modelo de IA (ej: Hugging Face free tier)
+    const aiResponse = await callAIModel(prompt);
+    
+    // 5. Post-procesamiento: filtrar metáforas vacías, validar tono
+    const sanitized = sanitizeResponse(aiResponse, { site, crisisCheck });
+    
+    // 6. Añadir recomendaciones del ecosistema si aplica
+    const ecoRecs = getContextualRecommendations(site, { question, crisisCheck });
+    
+    res.json({
+      type: 'ai_generated',
+      answer: sanitized,
+      disclaimer: 'Respuesta generada con IA bajo protocolos éticos. No sustituye apoyo profesional.',
+      followUp: requiresHumanReview 
+        ? 'Esta pregunta merece profundidad humana. ¿Te gustaría recursos de apoyo o explorar una pregunta similar de nuestra base curada?'
+        : '¿Quieres explorar más esta pregunta, ver recursos relacionados, o navegar a otro sitio del ecosistema?',
+      ecosystemRecommendations: ecoRecs,
+      meta {
+        site,
+        crisisDetected: crisisCheck.isCrisis,
+        predefinedFallback: false
+      }
+    });
+    
+  } catch (error) {
+    console.error('❌ Error en ai-response:', error);
+    res.status(500).json({ 
+      error: 'No pude procesar tu pregunta. Intenta con una pregunta más concreta o explora nuestro contenido curado.',
+      fallback: true,
+      suggestion: 'Puedes visitar el Mapa del Ecosistema para encontrar el espacio más adecuado para tu necesidad.'
+    });
+  }
+});
+
+// 🔍 Buscar en base curada unificada
+function findPredefinedAnswer(question, site) {
+  const lowerQ = question.toLowerCase().trim();
+  
+  // Buscar en el índice de contenido (ejemplo simplificado)
+  for (const [siteId, content] of Object.entries(contentDB)) {
+    if (site && siteId !== site) continue;
+    
+    for (const item of content.questions || []) {
+      // Coincidencia fuzzy simple (mejorar con levenshtein en producción)
+      if (lowerQ.includes(item.pregunta.toLowerCase().slice(0, 40)) || 
+          item.pregunta.toLowerCase().includes(lowerQ.slice(0, 40))) {
+        return {
+          ...item,
+          source: siteId
+        };
+      }
+    }
+  }
+  return null;
+}
+
+// 🌐 Obtener enlace de sitio del ecosistema
+function getSiteLink(siteId) {
+  const sites = {
+    'diversi-chem': 'https://diversi-chem-197c0447.buildaispace.app',
+    'dual-scars': 'https://dual-scars-my-app-28791d6c.buildaispace.app',
+    'espejo-judas': 'https://refleja-tu-fuerza-79908c98.buildaispace.app',
+    'mental-map': 'https://mental-map-my-app-08b82d77.buildaispace.app',
+    'espejo-100': 'https://espejo-de-los-100-9720a1f1.buildaispace.app',
+    'eco-silencio': 'https://eco-silencio-0cbb64b1.buildaispace.app'
+  };
+  return sites[siteId] || '#';
+}
+
+// 🧹 Sanitizar respuesta de IA: eliminar metáforas vacías, validar tono
+function sanitizeResponse(text, options) {
+  // 1. Eliminar frases poéticas evasivas (lista negra de patrones)
+  const emptyMetaphors = [
+    /el dolor es un río/i,
+    /la vida es un lienzo/i,
+    /el alma encuentra su camino/i,
+    /todo pasa por una razón/i,
+    /el universo conspira/i
+  ];
+  
+  let sanitized = text;
+  for (const pattern of emptyMetaphors) {
+    sanitized = sanitized.replace(pattern, '[Respuesta reformulada para mayor claridad]');
+  }
+  
+  // 2. Asegurar que incluya recordatorio de límites (si no es crisis)
+  if (!options.crisisCheck?.isCrisis && !sanitized.includes('no sustituye')) {
+    sanitized += '\n\n<small>Nota: Esta reflexión no sustituye apoyo profesional. Si esto te abruma, busca ayuda humana.</small>';
+  }
+  
+  // 3. Añadir enlaces al ecosistema si hay recomendaciones
+  if (options.ecoRecs?.length > 0) {
+    const links = options.ecoRecs.slice(0, 2).map(rec => 
+      `\n• [${rec.site}](${getSiteLink(rec.site)}): ${rec.reason}`
+    ).join('');
+    sanitized += `\n\n💡 Según tu pregunta, podrías explorar:${links}`;
+  }
+  
+  return sanitized;
+}
+
+module.exports = router;
+```
+
+---
+
+## 🚀 DESPLIEGUE 100% GRATUITO: GUÍA RÁPIDA
+
+### 📄 `deploy/setup-guide.md`
+
+```markdown
+# 🚀 Despliegue del Ecosistema Eco-Silencio (100% Free)
+
+## ✅ Requisitos previos
+- Cuenta en GitHub
+- Cuenta en [Render.com](https://render.com) (free tier: 512MB RAM, 100GB bandwidth/mes)
+- Opcional: Cuenta en Vercel para frontend estático (mejor performance)
+
+## 📦 Paso 1: Preparar el repositorio
+
+```bash
+# Estructura final
+eco-ecosystem/
+├── shared/          # Código y diseño compartido
+├── sites/           # Los 6 sitios
+├── backend/         # API unificada
+├── package.json     # Dependencias raíz
+├── render.yaml      # Configuración de Render
+└── README.md
+```
+
+## ⚙️ Paso 2: Configurar backend en Render
+
+1. Crear nuevo "Web Service" en Render
+2. Conectar tu repo de GitHub
+3. Usar configuración automática de `render.yaml`:
+
+```yaml
+# render.yaml
+services:
+  - type: web
+    name: eco-ecosystem-api
+    env: node
+    plan: free
+    buildCommand: npm install --prefix backend
+    startCommand: node backend/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: FRONTEND_URL
+        value: https://eco-ecosystem.onrender.com
+    autoDeploy: true
+```
+
+4. Añadir variables de entorno en Dashboard de Render:
+   - `HF_API_KEY`: (opcional, para IA con Hugging Face free tier)
+   - `CRISIS_RESOURCES_JSON`: (URL a recursos de crisis actualizables)
+
+## 🎨 Paso 3: Desplegar frontend (dos opciones)
+
+### Opción A: Todo en Render (más simple)
+- En `render.yaml`, añadir `staticPublishPath: ./sites` para servir sitios estáticos
+- Limitación: cold start de ~30s en free tier
+
+### Opción B: Vercel para frontend + Render para backend (mejor performance)
+
+```bash
+# En raíz del proyecto
+vercel --prod
+# Vercel detectará automáticamente los sitios en /sites como rutas
+```
+
+Configurar `vercel.json`:
+```json
+{
+  "version": 2,
+  "builds": [
+    { "src": "sites/**/*", "use": "@vercel/static" },
+    { "src": "backend/**/*", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "backend/$1" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/sites/$1" }
+  ]
+}
+```
+
+## 🔐 Paso 4: Configurar privacidad y seguridad
+
+1. **Middleware `no-trace.js`**: Ya incluido, bloquea IP/user-agent en logs
+2. **HTTPS**: Automático en Render/Vercel
+3. **CSP (Content Security Policy)**: Configurado en `backend/server.js`
+4. **Rate limiting**: 20 requests/hora por sesión anónima (evita spam)
+
+## 🧪 Paso 5: Verificar funcionamiento
+
+Visita:
+- `https://tu-app.onrender.com` → Debería redirigir a `/sites/eco-silencio/index.html`
+- `https://tu-app.onrender.com/api/health` → `{"status":"ok"}`
+
+## ♻️ Mantenimiento gratuito
+
+- **Base de datos**: SQLite en archivo local (Render persiste `/data` en free tier)
+- **Backups**: Exportar `ecosilencio.db` manualmente cada mes (o usar script de backup a GitHub Gist)
+- **Actualizaciones de contenido**: Editar archivos JSON en `/backend/data/` y hacer deploy
+
+## 🆘 Si superas límites free-tier
+
+- Render: $7/mes para 1GB RAM (vale la pena si hay tráfico real)
+- Alternativa: Migrar backend a [Railway.app](https://railway.app) ($5 crédito inicial gratis)
+- Frontend: Vercel free tier es muy generoso (125k requests/día)
+
+> 💡 Consejo: Comienza con Render todo-en-uno. Si el proyecto crece, separa frontend (Vercel) y backend (Railway).
+```
+
+---
+
+## 🎁 ENTREGA FINAL: ¿QUÉ RECIBES HOY?
+
+He estructurado el ecosistema completo con:
+
+✅ **Arquitectura profesional**: Código modular, reutilizable, escalable  
+✅ **Contenido curado**: Ejemplos reales de guías para Diversi-Chem y Dual Scars (con metodología para expandir a los 6 sitios)  
+✅ **Navegación cruzada**: Componente `ecosystem-map` + lógica en `eco-core.js` para recomendar sitios según contexto  
+✅ **Guardrails éticos**: Detección de crisis, prompts seguros, validación responsable  
+✅ **Privacidad por diseño**: Sin rastreo, sin cookies persistentes, encriptación local  
+✅ **Despliegue 100% free**: Guía paso a paso para Render/Vercel  
+
+### 📥 Próximo paso: ¿Quieres que genere?
+
+1. **Los 4 sitios restantes** (Espejo de Judas, Mental Map, Espejo de los 100, Eco Silencio) con el mismo nivel de detalle?  
+2. **El archivo `questions-1000.json` completo** para Eco Silencio + Espejo de los 100?  
+3. **El package `@eco-silencio/core` empaquetado** para npm (reutilizable en otros proyectos)?  
+4. **Un script de migración** para mover tus sitios actuales de buildai.space a esta arquitectura?
+
+Dime cuál priorizas y lo entrego en la siguiente respuesta. 
+
+> *"No estás construyendo webs. Estás construyendo refugios digitales donde la privacidad, la ética y la utilidad clínica van de la mano. Cada línea de código es un acto de acompañamiento."* 🖤✨
